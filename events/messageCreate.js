@@ -1,17 +1,23 @@
 const { tall } = require('tall');
+const { logger } = require('../logger');
+const { createBookmark } = require('../lib/createBookmark');
 
 module.exports = {
 	name: 'messageCreate',
 	async execute(message) {
-		const { logger } = require('../logger');
-    if (message.member.roles.cache.some(role => role.name === 'IFTTT')) {
+    if (message.member && message.member.roles && message.member.roles.cache.some(role => role.name === 'IFTTT')) {
       const [title, link] = message.content.split('\n');
       const unshortendUrl = await tall(link);
-      // message.channel.send(`title: ${title}, unshortendUrl: ${unshortendUrl}`);
 
-      // TODO: create thread
+      // create thread
+      const thread = await message.channel.threads.create({
+        name: title,
+        autoArchiveDuration: 60*24,
+        reason: 'Needed a separate thread for bookmark'
+      });
 
-      // TODO: create bookmark on hcw-rails api
+      // create bookmark on hcw-rails api
+      await createBookmark(unshortendUrl, thread.id);
 
       // TODO: send registerd message
     } else if (message.type === 'REPLY') {
