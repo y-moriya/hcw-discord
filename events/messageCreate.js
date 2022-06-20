@@ -27,7 +27,13 @@ module.exports = {
         const targetMessage = await message.channel.messages.fetch(message.reference.messageId);
         const targetUsername = targetMessage.author.username;
 
-        await createIgnore(targetUsername);
+        const result = await createIgnore(targetUsername);
+        if (result) {
+          message.channel.send(`Creating ignore was succeeded, usename: ${targetUsername}`);
+        } else {
+          message.channel.send(`Creating ignore was failed, usename: ${targetUsername}`);
+        }
+
       }
     }
 	},
