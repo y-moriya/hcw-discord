@@ -1,7 +1,5 @@
 const { tall } = require('tall');
-const { logger } = require('../logger');
 const { createBookmark } = require('../lib/createBookmark');
-const { createIgnore } = require('../lib/createIgnore');
 
 module.exports = {
 	name: 'messageCreate',
@@ -19,22 +17,6 @@ module.exports = {
 
       // create bookmark on hcw-rails api
       await createBookmark(unshortendUrl, thread.id);
-
-    } else if (message.type === 'REPLY') {
-      logger.info(`Message was detected, type: ${message.type}, content: ${message.content}`);
-      if (message.content === '/ignore') {
-        logger.info('fetch target message from reference message id.');
-        const targetMessage = await message.channel.messages.fetch(message.reference.messageId);
-        const targetUsername = targetMessage.author.username;
-
-        const result = await createIgnore(targetUsername);
-        if (result) {
-          message.channel.send(`Creating ignore was succeeded, usename: ${targetUsername}`);
-        } else {
-          message.channel.send(`Creating ignore was failed, usename: ${targetUsername}`);
-        }
-
-      }
     }
 	},
 };
