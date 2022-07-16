@@ -1,1 +1,1 @@
-# Hatena Comment Watcher on discord
+# Hatebu Comment Watcher on discord

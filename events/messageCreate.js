@@ -1,5 +1,6 @@
 const { tall } = require('tall');
 const { createBookmark } = require('../lib/createBookmark');
+const { myId } = require('../config.json');
 
 module.exports = {
 	name: 'messageCreate',
@@ -14,6 +15,8 @@ module.exports = {
         autoArchiveDuration: 60*24,
         reason: 'Needed a separate thread for bookmark'
       });
+
+      thread.members.add(myId);
 
       // create bookmark on hcw-rails api
       await createBookmark(unshortendUrl, thread.id);
