@@ -10,7 +10,7 @@ module.exports = {
 	async execute(interaction) {
 		const username = interaction.options.getString('input');
 		const ignores = getAllIgnores();
-		ignores.add(username);
+		ignores.push(username);
 		updateIgnores(ignores);
     logger.info(`update ignores from command, add: ${username}`);
 	},
