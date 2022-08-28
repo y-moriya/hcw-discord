@@ -4,7 +4,7 @@ const { limit_days, schedule } = require('../config.json');
 const { logger } = require('../logger');
 const cron = require('node-cron');
 const { getComment } = require('../lib/getComment');
-const { getAllBookmarks, updateBookmark } = require('../lib/bookmark');
+const { getAllBookmarks, updateBookmark, deleteBookmark } = require('../lib/bookmark');
 const { getAllIgnores } = require('../lib/ignore');
 
 module.exports = {
