@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { getAllIgnores, updateIgnores } = require('../lib/ignore');
+const { addIgnore } = require('../lib/ignore');
 const { logger } = require('../logger');
 
 module.exports = {
@@ -9,9 +9,7 @@ module.exports = {
 		.addStringOption(option => option.setName('input').setDescription('Enter a ignore username')),
 	async execute(interaction) {
 		const username = interaction.options.getString('input');
-		const ignores = await getAllIgnores();
-		ignores.push(username);
-		await updateIgnores(ignores);
+		await addIgnore(username);
     logger.info(`update ignores from command, add: ${username}`);
 		await interaction.reply(`${username} を非表示リストに追加しました。`);
 	},
