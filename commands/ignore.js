@@ -13,5 +13,6 @@ module.exports = {
 		ignores.push(username);
 		await updateIgnores(ignores);
     logger.info(`update ignores from command, add: ${username}`);
+		await interaction.reply(`${username} を非表示リストに追加しました。`);
 	},
 };
