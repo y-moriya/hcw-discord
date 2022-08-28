@@ -1,5 +1,5 @@
 const { tall } = require('tall');
-const { createBookmark } = require('../lib/createBookmark');
+const { createBookmark } = require('../lib/bookmark');
 const { myId } = require('../config.json');
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
 
       thread.members.add(myId);
 
-      // create bookmark on hcw-rails api
+      // create bookmark
       await createBookmark(unshortendUrl, thread.id);
     }
 	},
