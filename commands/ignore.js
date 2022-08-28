@@ -9,9 +9,9 @@ module.exports = {
 		.addStringOption(option => option.setName('input').setDescription('Enter a ignore username')),
 	async execute(interaction) {
 		const username = interaction.options.getString('input');
-		const ignores = getAllIgnores();
+		const ignores = await getAllIgnores();
 		ignores.push(username);
-		updateIgnores(ignores);
+		await updateIgnores(ignores);
     logger.info(`update ignores from command, add: ${username}`);
 	},
 };

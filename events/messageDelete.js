@@ -9,9 +9,9 @@ module.exports = {
       return;
     }
     const username = message.author.username;
-    const ignores = getAllIgnores();
+    const ignores = await getAllIgnores();
     ignores.push(username);
-    updateIgnores(ignores);
+    await updateIgnores(ignores);
     logger.info(`update ignores, add: ${username}`);
 	},
 };
