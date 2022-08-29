@@ -1,0 +1,11 @@
+{
+	"token": "YOUR_DISCORD_TOKEN",
+  "clientId": "",
+  "guildId": "",
+  "myId": "",
+  "hatebu_url": "https://b.hatena.ne.jp",
+  "channelId": "",
+  "schedule": "*/5 * * * *",
+  "discord_webhook_url": "https://discord.com/api/webhooks/*",
+  "limit_days": 1
+}
