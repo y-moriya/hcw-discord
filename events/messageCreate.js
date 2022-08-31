@@ -6,7 +6,8 @@ module.exports = {
 	name: 'messageCreate',
 	async execute(message) {
     if (message.member && message.member.roles && message.member.roles.cache.some(role => role.name === 'IFTTT')) {
-      const [title, link] = message.content.split('\n');
+      let [title, link] = message.content.split('\n');
+      title = title.slice(0, 99);
       const unshortendUrl = await tall(link);
 
       // create thread
