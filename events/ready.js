@@ -38,15 +38,16 @@ module.exports = {
 				} else {
 					// 取得したコメントが無かった場合
 					logger.info('No new comment.')
-		
+
 					// users を反映させるため update する
 					await updateBookmark(bookmark);
-		
+
 					// 最終投稿日時と現在時刻を比較し、
 					// config.limit_days 日が経過していた場合はbookmarkを削除する
+					// または、bookmark.updated_at が null の場合も削除する
 					const updated_at = new Date(bookmark.updated_at);
 					const limit_date = new Date(updated_at.setDate(updated_at.getDate() + limit_days));
-					if (limit_date < new Date()) {
+					if (!bookmark.updated_at || limit_date < new Date()) {
 						logger.info(`Delete bookmark ${bookmark.url} because the date of limit is over.`)
 						await deleteBookmark(bookmark);
 					}
