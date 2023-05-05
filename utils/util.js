@@ -9,6 +9,6 @@ module.exports.isTargetMessage = (message) => {
   if (!message.member.roles.cache.some(role => role.name === 'IFTTT')) return false;
   if (!message.channel) return false;
   if (!message.channel.id) return false;
-  if (!message.channel.id === channelId) return false;
+  if (message.channel.id !== channelId) return false;
   return true;
 }
