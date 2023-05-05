@@ -1,11 +1,12 @@
 const { tall } = require('tall');
 const { createBookmark } = require('../lib/bookmark');
 const { myId } = require('../config.json');
+const { isTargetMessage }=require('../utils/util.js');
 
 module.exports = {
 	name: 'messageCreate',
 	async execute(message) {
-    if (message.member && message.member.roles && message.member.roles.cache.some(role => role.name === 'IFTTT')) {
+    if (isTargetMessage(message)) {
       let [title, link] = message.content.split('\n');
       title = title.slice(0, 99);
       const unshortendUrl = await tall(link);
