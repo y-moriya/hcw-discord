@@ -1,5 +1,5 @@
 {
-	"token": "YOUR_DISCORD_TOKEN",
+  "token": "YOUR_DISCORD_TOKEN",
   "clientId": "",
   "guildId": "",
   "myId": "",
@@ -7,5 +7,7 @@
   "channelId": "",
   "schedule": "*/5 * * * *",
   "discord_webhook_url": "https://discord.com/api/webhooks/*",
-  "limit_days": 1
+  "limit_days": 1,
+  "supabase_service_key": "",
+  "supabase_url": ""
 }

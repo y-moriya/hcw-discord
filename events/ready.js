@@ -56,6 +56,6 @@ module.exports = {
 				await _sleep(1000);
 			}
 			logger.info('end get and post comment.');
-		})
+		});
 	},
 };
