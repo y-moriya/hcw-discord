@@ -1,0 +1,17 @@
+{
+  "name": "hcw-discord",
+  "script": "index.js",
+  "interpreter": "/home/ubuntu/.nvm/versions/node/v16.15.0/bin/node",
+  "watch": [
+    "./"
+  ],
+  "ignore_watch": [
+    "node_modules",
+    "log",
+    "\\.git",
+    "db.json"
+  ],
+  "watch_options": {
+    "followSymlinks": false
+  }
+}
